@@ -9,6 +9,7 @@ using namespace std;
 /// @brief Represent a position vector in 3D space
 class Vector3 {
 private:  //access modifier
+
 	//float = 4 bytes x 3 = 12 bytes
 	float x, y, z;  //fields/member variables
 
@@ -83,6 +84,21 @@ public: //access modifier
 
 		//return result
 		return sum;
+	}
+
+	float Dot(Vector3 other) {
+		//TODO
+		return -1;
+	}
+
+	float AngleBetweenInDegrees(Vector3 other) {
+		//TODO
+		return -1;
+	}
+
+	Vector3 Cross(Vector3 other) {
+		//TODO
+		return Vector3();
 	}
 
 	string ToString() {
