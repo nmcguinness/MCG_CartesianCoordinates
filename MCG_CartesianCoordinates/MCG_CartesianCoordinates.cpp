@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "MCG_CartesianCoordinates.h"
 
 using namespace std;
 
@@ -106,6 +107,7 @@ public: //access modifier
 	}
 };
 
+//used to show that we can step down and down and down into interesting methods
 int doAnotherthing(int b) {
 	return b * b;
 }
@@ -115,36 +117,62 @@ int doSomething(int a) {
 	return x;
 }
 
+//the main starting point (insertion point) for our code
 int main()
 {
+	cout << endl << "/********************** Adding breakpoints **********************/" << endl;
 	int result = doSomething(5);
 	cout << "answer is " << result;
 
+	cout << endl << "/********************** Using - ToString **********************/" << endl;
 	Vector3 b(-2, 5, 3);  //instantiate a variable, b it is of type Vector3
-
 	std::cout << "Vector is " << b.ToString() << std::endl;
+
+	cout << endl << "/********************** Using - get methods **********************/" << endl;
 	std::cout << "x value:" << b.getX() << std::endl;
 	std::cout << "length is " << b.Length() << std::endl;
-
 	b.setX(4);
 	std::cout << "new x value:" << b.getX() << endl;
 	std::cout << "new length is " << b.Length() << endl;
 
 	Vector3 origin;
 	std::cout << "(" << origin.getX() << "," << origin.getY() << "," << origin.getZ() << ")" << std::endl;
-
 	string s = origin.ToString();
 	cout << s << "\r\n"; //carriage return, new line
 
+	cout << endl << "/********************** Using - Normalize **********************/" << endl;
 	Vector3 normalizedB = b.Normalize();
 	cout << normalizedB.ToString() << endl;
-
 	b.NormalizeOriginal();
 	cout << b.ToString() << endl;
 
+	cout << endl << "/********************** Using - Distance **********************/" << endl;
 	Vector3 dublin(1, 2, 3);
 	Vector3 dundalk(4, 5, 6);
-
 	float distance = dundalk.Distance(dublin);
 	cout << "Distance between towns is " << distance << endl;
+
+	cout << endl << "/****************** Using - Distance & AngleBetweenInDegrees ******************/" << endl;
+	//add code to check the dot product and angle between the Vector3 objects listed below
+	Vector3 unitX(1, 0, 0);
+	Vector3 unitY(0, 1, 0);
+	Vector3 unitZ(0, 0, 1);
+	Vector3 unitX_double(2, 0, 0);
+	Vector3 unitY_triple(0, 3, 0);
+	Vector3 unitZ_quad(0, 0, 4);
+
+	//test Dot()
+	cout << "Dot product x.y is " << unitX.Dot(unitY) << endl;
+	cout << "Dot product y.z is " << unitY.Dot(unitZ) << endl;
+	cout << "Dot product z.x is " << unitZ.Dot(unitX) << endl;
+	cout << "Dot product 2x.3y is " << unitX_double.Dot(unitY_triple) << endl;
+
+	//test AngleBetweenInDegrees()
+	cout << "Angle between x and y is " << unitX.AngleBetweenInDegrees(unitY) << " degrees" << endl;
+	cout << "Angle between y and z is " << unitY.AngleBetweenInDegrees(unitZ) << " degrees" << endl;
+	cout << "Angle between z and x is " << unitZ.AngleBetweenInDegrees(unitX) << " degrees" << endl;
+	cout << "Angle between z and z is " << unitZ.AngleBetweenInDegrees(unitZ) << " degrees" << endl;
+
+	//add your own Vector3 objects and test the results of the Dot and AngleBetweenInDegrees methods
+	//validate that all printed results are correct
 }
